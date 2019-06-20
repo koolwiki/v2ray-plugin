@@ -47,6 +47,14 @@ $upx v2ray-plugin_linux_arm* >/dev/null
 tar -zcf bin/v2ray-plugin-linux-arm-$VERSION.tar.gz v2ray-plugin_linux_arm*
 $sum bin/v2ray-plugin-linux-arm-$VERSION.tar.gz
 
+# ARM64
+
+	env CGO_ENABLED=0 GOOS=linux GOARCH=arm64 go build -v -ldflags "$LDFLAGS" -gcflags "$GCFLAGS" -o v2ray-plugin_linux_arm64
+done
+$upx v2ray-plugin_linux_arm* >/dev/null
+tar -zcf bin/v2ray-plugin-linux-arm64.tar.gz v2ray-plugin_linux_arm*
+$sum bin/v2ray-plugin-linux-arm64.tar.gz
+
 # MIPS
 MIPSS=(mips mipsle)
 for v in ${MIPSS[@]}; do
